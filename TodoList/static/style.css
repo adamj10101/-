@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    padding: 20px;
+}
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+input[type="text"] {
+    width: 75%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+button {
+    padding: 10px 15px;
+    border: none;
+    background: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background: #218838;
+}
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+li.done {
+    color: #999;
+    text-decoration: line-through;
+}
+li a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 10px;
+}
+li a.delete {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.filters {
+    margin-top: 10px;
+}
+.filters a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+.filters .active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.task-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-form {
+    flex-grow: 1;
+    display: flex;
+    gap: 5px;
+}
+
+.edit-input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.timestamp {
+    font-size: 0.75em;
+    color: #888;
+}

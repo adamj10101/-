@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>ToDo-лист</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>ToDo-лист</h1>
+
+    <form action="{{ url_for('add') }}" method="post">
+        <input type="text" name="title" placeholder="Новая задача" required />
+        <button type="submit">Добавить</button>
+    </form>
+
+    <div class="filters">
+        <a href="/?filter=all" class="{{ 'active' if filter_status == 'all' else '' }}">Все</a>
+        <a href="/?filter=active" class="{{ 'active' if filter_status == 'active' else '' }}">Активные</a>
+        <a href="/?filter=done" class="{{ 'active' if filter_status == 'done' else '' }}">Выполненные</a>
+    </div>
+
+    <ul>
+        {% for task in tasks %}
+            <li class="{{ 'done' if task.done else '' }}">
+                <div class="task-block">
+                    <a href="{{ url_for('toggle', task_id=task.id) }}">
+                        {% if task.done %}✔{% else %}○{% endif %}
+                    </a>
+
+                    <form action="{{ url_for('edit', task_id=task.id) }}" method="post" class="edit-form">
+                        <input type="text" name="new_title" value="{{ task.title }}" class="edit-input" />
+                        <button type="submit">Сохранить</button>
+                    </form>
+
+                    <small class="timestamp">{{ task.created_at.split('T')[0] }}</small>
+
+                    <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">✖</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
